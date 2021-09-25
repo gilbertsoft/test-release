@@ -1,0 +1,60 @@
+autolabeler:
+  - label: 'bugfix'
+    branch:
+      - '/bugfix\/.+/'
+    title:
+      - '/\[BUGFIX\] .*/i'
+  - label: 'docs'
+    branch:
+      - '/docs\/.+/'
+    title:
+      - '/\[DOCS\] .*/i'
+  - label: 'feature'
+    branch:
+      - '/feature\/.+/'
+    title:
+      - '/\[FEATURE\] .*/i'
+  - label: 'security'
+    branch:
+      - '/security\/.+/'
+    title:
+      - '/\[SECURITY\] .*/i'
+  - label: 'task'
+    branch:
+      - '/task\/.+/'
+    title:
+      - '/\[TASK\] .*/i'
+name-template: 'Test Project $RESOLVED_VERSION 🌈'
+tag-template: '$RESOLVED_VERSION'
+categories:
+  - title: '🚀 Features'
+    label: 'feature'
+  - title: '⚠ Breaking'
+    label: 'breaking'
+  - title: '🐛 Bug Fixes'
+    label: 'bugfix'
+  - title: '🧰 Maintenance'
+    label: 'task'
+  - title: '📖 Documentation'
+    label: 'docs'
+  - title: '🔓 Security'
+    label: 'security'
+change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
+version-resolver:
+  major:
+    labels:
+      - 'breaking'
+  minor:
+    labels:
+      - 'feature'
+  patch:
+    labels:
+      - 'bugfix'
+      - 'task'
+      - 'docs'
+  default: patch
+template: |
+  ## Changes since $PREVIOUS_TAG
+
+  $CHANGES
