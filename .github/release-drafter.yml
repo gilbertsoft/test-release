@@ -1,42 +1,16 @@
-autolabeler:
-  - label: 'bugfix'
-    branch:
-      - '/bugfix\/.+/'
-    title:
-      - '/\[BUGFIX\] .*/i'
-  - label: 'docs'
-    branch:
-      - '/docs\/.+/'
-    title:
-      - '/\[DOCS\] .*/i'
-  - label: 'feature'
-    branch:
-      - '/feature\/.+/'
-    title:
-      - '/\[FEATURE\] .*/i'
-  - label: 'security'
-    branch:
-      - '/security\/.+/'
-    title:
-      - '/\[SECURITY\] .*/i'
-  - label: 'task'
-    branch:
-      - '/task\/.+/'
-    title:
-      - '/\[TASK\] .*/i'
 name-template: 'Test Project $RESOLVED_VERSION 🌈'
 tag-template: '$RESOLVED_VERSION'
 categories:
-  - title: '🚀 Features'
-    label: 'feature'
   - title: '⚠ Breaking'
     label: 'breaking'
+  - title: '🚀 Features'
+    label: 'enhancement'
   - title: '🐛 Bug Fixes'
-    label: 'bugfix'
+    label: 'bug'
   - title: '🧰 Maintenance'
-    label: 'task'
+    label: 'maintenance'
   - title: '📖 Documentation'
-    label: 'docs'
+    label: 'documentation'
   - title: '🔓 Security'
     label: 'security'
 change-template: '- $TITLE (#$NUMBER) by @$AUTHOR'
@@ -47,12 +21,13 @@ version-resolver:
       - 'breaking'
   minor:
     labels:
-      - 'feature'
+      - 'enhancement'
   patch:
     labels:
-      - 'bugfix'
-      - 'task'
-      - 'docs'
+      - 'bug'
+      - 'documentation'
+      - 'maintenance'
+      - 'security'
   default: patch
 template: |
   ## Changes since $PREVIOUS_TAG

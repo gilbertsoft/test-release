@@ -1,0 +1,32 @@
+name: Create Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to create the release'
+        required: true
+        default: 'main'
+
+jobs:
+  update_release_draft:
+    runs-on: ubuntu-latest
+    steps:
+      - name: calculate next version
+        id: version
+        uses: patrickjahns/version-drafter-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Drafts your next Release notes as Pull Requests are merged into "master"
+      - uses: release-drafter/release-drafter@v5
+        # (Optional) specify config name to use, relative to .github/. Default: release-drafter.yml
+        with:
+        #   config-name: my-config.yml
+          name: ${{ format('v{0}', steps.version.outputs.next-version) }}
+          tag: ${{ format('{0}', steps.version.outputs.next-version) }}
+          version: ${{ format('v{0}', steps.version.outputs.next-version) }}
+          #publish: ${{ }}
+          commitish: ${{ GITHUB_REF }}
+          disable-autolabeler: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
