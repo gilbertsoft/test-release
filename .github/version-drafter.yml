@@ -1,0 +1,9 @@
+major-labels:
+  - 'breaking'
+minor-labels:
+  - 'enhancement'
+patch-labels:
+  - 'bug'
+  - 'documentation'
+  - 'maintenance'
+  - 'security'
