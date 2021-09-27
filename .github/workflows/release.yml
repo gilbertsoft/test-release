@@ -27,6 +27,7 @@ jobs:
         uses: release-drafter/release-drafter@v5
         # (Optional) specify config name to use, relative to .github/. Default: release-drafter.yml
         with:
+          filter-by-commitish: true
           commitish: ${{ github.ref }}
           disable-autolabeler: true
         env:
@@ -60,6 +61,7 @@ jobs:
           #tag: ${{ format('{0}', steps.version.outputs.next-version) }}
           #version: ${{ format('v{0}', steps.version.outputs.next-version) }}
           #publish: ${{ }}
+          filter-by-commitish: true
           commitish: ${{ github.ref }}
           disable-autolabeler: true
         env:
