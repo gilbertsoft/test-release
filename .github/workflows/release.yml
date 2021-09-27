@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       branch:
-        description: 'Branch to create the release'
+        description: 'Some input'
         required: true
         default: 'main'
 
@@ -26,7 +26,7 @@ jobs:
           tag: ${{ format('{0}', steps.version.outputs.next-version) }}
           version: ${{ format('v{0}', steps.version.outputs.next-version) }}
           #publish: ${{ }}
-          commitish: ${{ GITHUB_REF }}
+          commitish: ${{ github.ref }}
           disable-autolabeler: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
